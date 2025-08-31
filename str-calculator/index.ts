@@ -5,22 +5,30 @@ export const stringCalculator = (numbers: string): number => {
   let separatorRg = `,|\n`;
   if (numbers.startsWith("//")) {
     const newlineIndex = numbers.indexOf("\n");
-    if (newlineIndex !== -1) {
+      if (newlineIndex !== -1) {
       let delimiterString = numbers.substring(2, newlineIndex);
-
       if (delimiterString.startsWith("[") && delimiterString.endsWith("]")) {
-        delimiterString = delimiterString.substring(
-          1,
-          delimiterString.length - 1
-        );
+        for (let i = 0; i < delimiterString.length; i++) {
+          if (delimiterString[i] === '[') {
+            const closingBracketIndex = delimiterString.indexOf(']', i + 1);
+            if (closingBracketIndex !== -1) {
+              const delimiter = delimiterString.substring(i + 1, closingBracketIndex);
+              const escapedDelimiter = delimiter.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+              separatorRg += `|${escapedDelimiter}`;
+              i = closingBracketIndex;
+            } else {
+              // Malformed delimiter string, exit loop
+              break;
+            }
+          }
+        }
+      } else {
+        // Fallback to handling a single-character custom delimiter.
+        const escapedDelimiter = delimiterString.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+        separatorRg += `|${escapedDelimiter}`;
       }
-
-      const escapedDelimiter = delimiterString.replace(
-        /[.*+?^${}()|[\]\\]/g,
-        "\\$&"
-      );
-
-      separatorRg += `|${escapedDelimiter}`;
+      
+      // Update the string to only contain the numbers.
       numbers = numbers.substring(newlineIndex + 1);
     }
   }
