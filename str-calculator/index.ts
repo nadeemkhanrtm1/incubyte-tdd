@@ -34,8 +34,10 @@ export const stringCalculator = (numbers: string): number => {
     const num = +numberSplitByComma[i];
     if (num < 0) {
       negativeNumbers.push(num);
-    } else {
+    } else if (num <= 1000) {
       sum += +numberSplitByComma[i];
+    } else{
+      console.info(num, " is ignored because >1000")
     }
   }
 
