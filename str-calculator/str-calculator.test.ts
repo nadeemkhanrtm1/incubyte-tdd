@@ -43,4 +43,14 @@ describe("String Calculator", () => {
       expect(stringCalculator(",20,20,20")).toBe(60);
     });
   });
+
+  describe("Addition by comma(,) or newline(\n) seprator", () => {
+    it("should correctly return a sum of string with both comma and newline delimiters", () => {
+      expect(stringCalculator("10\n20,30\n40")).toBe(100);
+    });
+
+     it("should correctly return a sum of string with both comma and newline delimiters without in between number", () => {
+      expect(stringCalculator("10\n20,\n40")).toBe(70);
+    });
+  });
 });
