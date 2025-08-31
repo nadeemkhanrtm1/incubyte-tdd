@@ -29,8 +29,18 @@ export const stringCalculator = (numbers: string): number => {
 
   const numberSplitByComma = numbers.split(new RegExp(separatorRg, "g"));
   let sum = 0;
+  let negativeNumbers: number[] = [];
   for (let i = 0; i < numberSplitByComma.length; i++) {
-    sum += +numberSplitByComma[i];
+    const num = +numberSplitByComma[i];
+    if (num < 0) {
+      negativeNumbers.push(num);
+    } else {
+      sum += +numberSplitByComma[i];
+    }
+  }
+
+  if (negativeNumbers.length > 0) {
+    throw new Error(`negatives not allowed i.e. ${negativeNumbers.join(",")}`);
   }
 
   return sum;
