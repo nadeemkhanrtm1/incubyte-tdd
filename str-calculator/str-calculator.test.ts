@@ -1,8 +1,9 @@
 import { describe, it, expect } from "vitest";
+import { stringCalculator } from "./index";
 
 describe("String Calculator", () => {
   it("should return 0 for an empty string", () => {
-    expect(stringCalculator("").toBe(0));
+    expect(stringCalculator("")).toBe(0);
   });
 
   it("should return the number itself for a single number string", () => {
@@ -14,4 +15,14 @@ describe("String Calculator", () => {
   it("should return sum of two number by comma seprated string", () => {
     expect(stringCalculator("1,2")).toBe(3);
   });
+
+    it("should return sum of two number when first is empty by comma seprated string", () => {
+    expect(stringCalculator(",2")).toBe(2);
+  });
+
+    it("should return sum of two number when second is empty by comma seprated string", () => {
+    expect(stringCalculator("1,")).toBe(1);
+  });
+
+
 });
