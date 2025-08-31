@@ -49,7 +49,7 @@ describe("String Calculator", () => {
       expect(stringCalculator("10\n20,30\n40")).toBe(100);
     });
 
-     it("should correctly return a sum of string with both comma and newline delimiters without in between number", () => {
+    it("should correctly return a sum of string with both comma and newline delimiters without in between number", () => {
       expect(stringCalculator("10\n20,\n40")).toBe(70);
     });
   });
@@ -57,10 +57,24 @@ describe("String Calculator", () => {
   describe("Support different delimiters", () => {
     it("should return sum of numbers with custom delimiters", () => {
       expect(stringCalculator("//[*]\n1*2*3")).toBe(6);
-    })
+    });
 
     it("should return sum of numbers with custom delimiters and default delimiters", () => {
       expect(stringCalculator("//[*]\n1*2,3\n5")).toBe(11);
-    })
-  })
+    });
+  });
+
+  describe("Add function with negative numbers", () => {
+    it("should throw an error with a single negative number", () => {
+      expect(() => stringCalculator("//[*]\n1*-2,3\n5")).toThrow(
+        "negatives not allowed i.e. -2"
+      );
+    });
+
+    it("should throw an error listing all negative numbers when multiple are present", () => {
+      expect(() => stringCalculator("-1,-2,-3,-5")).toThrow(
+        "negatives not allowed i.e. -1,-2,-3,-5"
+      );
+    });
+  });
 });
