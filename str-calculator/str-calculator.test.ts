@@ -83,4 +83,18 @@ describe("String Calculator", () => {
       expect(stringCalculator("2,1001,3")).toBe(5);
     });
   });
+
+  describe("Delimiters can be of any length", () => {
+    it("should return sum of numbers with custom delimiters of any length", () => {
+      expect(stringCalculator("//[***]\n1***2***3")).toBe(6);
+    });
+
+    it("should return sum of numbers with custom delimiters of any length", () => {
+      expect(stringCalculator("//[***]\n1***2,3")).toBe(6);
+    });
+
+     it("should return sum of numbers with custom delimiters of any length", () => {
+      expect(stringCalculator("//[***]\n1***2,3\n4")).toBe(10);
+    });
+  });
 });
