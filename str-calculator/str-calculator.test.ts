@@ -93,8 +93,22 @@ describe("String Calculator", () => {
       expect(stringCalculator("//[***]\n1***2,3")).toBe(6);
     });
 
-     it("should return sum of numbers with custom delimiters of any length", () => {
+    it("should return sum of numbers with custom delimiters of any length", () => {
       expect(stringCalculator("//[***]\n1***2,3\n4")).toBe(10);
+    });
+  });
+
+  describe("Allow multiple delimiters", () => {
+    it("should return sum of numbers with multiple delimiters", () => {
+      expect(stringCalculator("//[*][%]\n1*2%3")).toBe(6);
+    });
+
+    it("should return sum of numbers with multiple and default delimiters", () => {
+      expect(stringCalculator("//[*][%]\n1*2%3,4\n5")).toBe(15);
+    });
+
+    it("should return sum of numbers with multiple and default delimiters", () => {
+      expect(stringCalculator("//[**][%%%]\n1**2%%%3,4\n5")).toBe(15);
     });
   });
 });
