@@ -53,4 +53,14 @@ describe("String Calculator", () => {
       expect(stringCalculator("10\n20,\n40")).toBe(70);
     });
   });
+
+  describe("Support different delimiters", () => {
+    it("should return sum of numbers with custom delimiters", () => {
+      expect(stringCalculator("//[*]\n1*2*3")).toBe(6);
+    })
+
+    it("should return sum of numbers with custom delimiters and default delimiters", () => {
+      expect(stringCalculator("//[*]\n1*2,3\n5")).toBe(11);
+    })
+  })
 });
