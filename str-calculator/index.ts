@@ -15,14 +15,12 @@ export const stringCalculator = (numbers: string): number => {
         );
       }
 
-      // Escape any special characters in the delimiter string to use in the regex.
       const escapedDelimiter = delimiterString.replace(
         /[.*+?^${}()|[\]\\]/g,
         "\\$&"
       );
-      // Add the custom delimiter to the regex pattern.
+
       separatorRg += `|${escapedDelimiter}`;
-      // Update the string to only contain the numbers.
       numbers = numbers.substring(newlineIndex + 1);
     }
   }
