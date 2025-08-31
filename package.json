@@ -1,0 +1,14 @@
+{
+  "name": "incubyte-tdd",
+  "version": "1.0.0",
+  "description": "Incubyte TDD String Calculator",
+  "main": "index.ts",
+  "scripts": {
+    "test": "vitest"
+  },
+  "author": "Nadeem Khan",
+  "license": "ISC",
+  "devDependencies": {
+    "vitest": "^0.34.6"
+  }
+}
