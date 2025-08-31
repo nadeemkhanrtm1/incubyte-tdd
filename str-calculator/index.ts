@@ -2,8 +2,8 @@ export const stringCalculator = (numbers: string): number => {
   if (numbers === "") {
     return 0;
   }
-  let seprator = ",";
-  const numberSplitByComma = numbers.split(seprator);
+  let sepratorRg = /,|\n/
+  const numberSplitByComma = numbers.split(sepratorRg);
   let sum = 0;
   for (let i = 0; i < numberSplitByComma.length; i++) {
     sum += +numberSplitByComma[i];
