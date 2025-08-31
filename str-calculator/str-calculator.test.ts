@@ -16,13 +16,15 @@ describe("String Calculator", () => {
     expect(stringCalculator("1,2")).toBe(3);
   });
 
-    it("should return sum of two number when first is empty by comma seprated string", () => {
+  it("should return sum of two number when first is empty by comma seprated string", () => {
     expect(stringCalculator(",2")).toBe(2);
   });
 
-    it("should return sum of two number when second is empty by comma seprated string", () => {
+  it("should return sum of two number when second is empty by comma seprated string", () => {
     expect(stringCalculator("1,")).toBe(1);
   });
 
-
+  it("should return sum of N numbers by comma seprated string", () => {
+    expect(stringCalculator("10,20,30")).toBe(60);
+  });
 });
