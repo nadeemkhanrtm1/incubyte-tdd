@@ -77,4 +77,10 @@ describe("String Calculator", () => {
       );
     });
   });
+
+  describe("Numbers bigger than 1000 should be ignored", () => {
+    it("should return the sum of numbers while ignoring any number greater than 1000", () => {
+      expect(stringCalculator("2,1001,3")).toBe(5);
+    });
+  });
 });
